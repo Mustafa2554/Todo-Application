@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* BODY */
+
+body {
+    min-height: 100vh;
+    background-color: #0f172a; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* CONTAINER */
+.container {
+    width: 100%;
+    max-width: 450px;
+    background-color: #1e293b; /* Dark card */
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    margin: auto;
+    /* Entry Animation */
+    animation: fadeSlide 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+@keyframes fadeSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TITLE */
+
+#title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+#title h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #f1f5f9;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#title #btn {
+    width: 80%;
+}
+
+/* INPUT FIELD */
+#title #todo_input {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 19px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: #f1f5f9;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+#todo_input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+/* MAIN ADD BUTTON */
+#btn {
+    width: 100%;
+    margin-top: 14px;
+    margin-bottom: 10px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #22c55e; /* Modern green */
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+#btn:hover {
+    background: #16a34a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(34, 197, 94, 0.4);
+}
+
+#btn:active {
+    transform: scale(0.97);
+}
+
+/* TODO LIST */
+#todo_list {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: mandatory;
+    scrollbar-color: #334155;
+}
+
+#todo_list::-webkit-scrollbar-thumb{
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+#todo_list::-webkit-scrollbar-track{
+    background: #0f172a;   /* Change this color */
+    border-radius: 10px;
+    
+}
+#todo_list::-webkit-scrollbar{
+    background-color: transparent;
+}
+
+/* TODO ITEM */
+.todo-item {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    margin-right: 5px;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    text-transform: capitalize;    
+    overflow: hidden;
+
+    /* Slide-in animation */
+    animation: slideIn 0.3s ease forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.todo-item:hover {
+    border-color: #3b82f6;
+    transform: translateY(-1px);
+}
+
+/* TODO TEXT */
+.todo-text {
+    color: #e2e8f0;
+    font-size: 16px;
+    flex: 1;
+    word-break: break-word;
+}
+
+/* TODO ITEM BUTTONS */
+.todo-item button {
+    padding: 7px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-right: 10px;
+}
+
+/* Edit Button */
+.edit-button {
+    background: #3b82f6; /* Blue */
+    color: #fff;
+}
+
+.edit-button:hover {
+    background: #2563eb;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transform: scale(1.05);
+}
+
+/* Delete Button */
+.delete-button {
+    background: #ef4444; /* Red */
+    color: #fff;
+}
+
+.delete-button:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    transform: scale(1.05);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+
+    .container {
+        padding: 25px;
+    }
+
+    .container h1 {
+        font-size: 22px;
+    }
+
+    #todo_input {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    #btn {
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .todo-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .todo-item button {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .container h1 {
+        font-size: 18px;
+    }
+
+    #todo_input {
+        font-size: 13px;
+    }
+
+    .todo-text {
+        text-align: center;
+    }
+
+    #btn {
+        font-size: 13px;
+    }
+
+
+    .todo-text {
+        font-size: 13px;
+    }
+}
